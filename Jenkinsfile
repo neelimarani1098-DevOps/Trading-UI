@@ -27,7 +27,7 @@ pipeline {
 
         stage('Build Application') {
             steps {
-                sh 'CI=false npm run build'
+                sh 'export NODE_OPTIONS=--openssl-legacy-provider && CI=false npm run build'
             }
         }
 
@@ -40,7 +40,7 @@ pipeline {
 
     post {
         success {
-            echo 'CI Build Successful'
+            echo 'CI Build Successful ✅'
         }
         failure {
             echo 'Build Failed ❌'
